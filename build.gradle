@@ -23,14 +23,14 @@ node {
 
 task npmInstallDependencies(type: NpmTask) {
     execOverrides {
-        it.ignoreExtValue = true
+
         it.workingDir = 'src/main/frontend'
     }
     args = ['install']
 }
 
 task npmBuild(type: NpmTask) {
-    //dependsOn 'npmInstallDependencies'
+    dependsOn 'npmInstallDependencies'
     execOverrides {
         it.workingDir = 'src/main/frontend'
     }
@@ -38,8 +38,13 @@ task npmBuild(type: NpmTask) {
 }
 
 task copyFrontendtoBuild(type: Copy){
+    dependsOn 'npmBuild'
     from "$projectDir/src/main/frontend/build"
     into "$buildDir/resources/main/static"
+}
+
+processResources {
+    dependsOn 'copyFrontendtoBuild'
 }
 
 dependencies {

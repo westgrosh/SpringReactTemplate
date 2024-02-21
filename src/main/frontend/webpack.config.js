@@ -6,7 +6,8 @@ module.exports = {
     entry: "./react_app/index.js",
     output: {
         filename: "app.js",
-        path: path.resolve(__dirname + '/build'),
+        path: path.resolve(__dirname + '/../resources/static'),
+
         library: {
             name: 'components',
             type: 'umd',
@@ -70,9 +71,10 @@ module.exports = {
         },
         port: 8090,
         proxy: {
-            '/api': {
+            '/': {
                 target: 'http://localhost:8080',
-                secure: false
+                secure: false,
+                changeOrigin: true
             }
         },
         hot: true

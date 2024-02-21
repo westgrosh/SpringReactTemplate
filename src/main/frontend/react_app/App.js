@@ -11,7 +11,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p>
-          made with &#10084; from westgrosh
+          westgrosh &#10084; kris_chernenko
         </p>
         <a
           className="App-link"
